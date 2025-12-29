@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Health Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #43a047;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Food Health Checker</h1>
+    <input type="text" id="foodInput" placeholder="Enter food name" />
+    <button onclick="checkFood()">Check</button>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    function checkFood() {
+      const healthyFoods = [
+        "apple", "banana", "salad", "vegetables", "fruit",
+        "milk", "curd", "yogurt", "nuts", "oats", "rice"
+      ];
+
+      const junkFoods = [
+        "pizza", "burger", "fries", "chips", "coke",
+        "samosa", "puffs", "cake", "chocolate"
+      ];
+
+      const food = document.getElementById("foodInput").value.toLowerCase();
+      const result = document.getElementById("result");
+
+      if (healthyFoods.includes(food)) {
+        result.style.color = "green";
+        result.innerText = "✅ This is a Healthy Food";
+      } else if (junkFoods.includes(food)) {
+        result.style.color = "red";
+        result.innerText = "❌ This is Junk Food. Try a fruit instead!";
+      } else if (food === "") {
+        result.style.color = "#333";
+        result.innerText = "Please enter a food name";
+      } else {
+        result.style.color = "orange";
+        result.innerText = "⚠️ Food not found in database";
+      }
+    }
+  </script>
+</body>
+</html>
